@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "TEAMID.tr.com.gural.stoktakip",
+        "paths": ["/stoktakip-verify/*"]
+      }
+    ]
+  }
+}
