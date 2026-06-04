@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stoktakip — Doğrulama</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #F8FAFC;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 40px 32px;
+      text-align: center;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      max-width: 340px;
+      width: 90%;
+    }
+    .dot {
+      width: 20px; height: 20px;
+      background: #EB2525;
+      border-radius: 50%;
+      margin: 0 auto 24px;
+    }
+    h1 { font-size: 22px; font-weight: 800; color: #1A1A1A; margin-bottom: 8px; }
+    p  { font-size: 14px; color: #94A3B8; line-height: 1.5; margin-bottom: 28px; }
+    .btn {
+      display: inline-block;
+      background: #EB2525;
+      color: white;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 16px 32px;
+      border-radius: 14px;
+      text-decoration: none;
+      width: 100%;
+    }
+    .note { margin-top: 16px; font-size: 12px; color: #CBD5E1; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="dot"></div>
+    <h1>Doğrulama</h1>
+    <p>Stoktakip uygulamasına yönlendiriliyorsunuz.</p>
+    <a class="btn" id="openBtn" href="#">Uygulamayı Aç</a>
+    <p class="note">Uygulama otomatik açılmadıysa butona dokunun.</p>
+  </div>
+
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var token = params.get('token') || '';
+
+      if (!token) {
+        document.querySelector('p').textContent = 'Geçersiz veya eksik doğrulama bağlantısı.';
+        document.getElementById('openBtn').style.display = 'none';
+        return;
+      }
+
+      var deepLink = 'stoktakip://verify?token=' + encodeURIComponent(token);
+      document.getElementById('openBtn').href = deepLink;
+
+      // Sayfa yüklenince 600ms sonra otomatik yönlendir
+      setTimeout(function () {
+        window.location.href = deepLink;
+      }, 600);
+    })();
+  </script>
+</body>
+</html>

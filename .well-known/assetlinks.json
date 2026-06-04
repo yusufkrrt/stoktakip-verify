@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "tr.com.gural.stoktakip",
+      "sha256_cert_fingerprints": [
+        "DB:F3:32:AD:38:15:69:1B:5E:7C:0E:2C:57:64:36:24:91:B0:15:16:C7:D7:75:F0:43:F7:07:8B:D1:41:C0:91"
+      ]
+    }
+  }
+]
